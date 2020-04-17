@@ -1,14 +1,11 @@
 <div class="row">
     <div class="col-xs-10">
-        <app-shopinglistedit 
-        (ingredientAdded)="AddtoIngredientList($event)"
-        (ingredientDeleted) = "ingredients.pop()"
-        (ingredientCleared) = "ingredients = []">
+        <app-shopinglistedit >
         </app-shopinglistedit>
         <hr>
         <ul class="list-group">
-            <a href="" class="list-group-item" style="cursor: pointer;"
-            *ngFor="let ingredient of ingredients"> 
+            <a  class="list-group-item" style="cursor: pointer;"
+            *ngFor="let ingredient of ingredients; let id = index" (click)="onClickItem(id)"> 
             <h4>{{ingredient.name}} ({{ingredient.amount}})</h4>
         </a>
         </ul>
