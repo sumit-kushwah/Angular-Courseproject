@@ -26,7 +26,6 @@ export class headerComponent {
                         this.errorOccurred = false;
                     }, 2000);
                 }
-
             }
         );
     }
