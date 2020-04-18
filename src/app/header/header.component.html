@@ -2,23 +2,27 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
-              <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+                <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
             </button>
             <a routerLink="/" class="navbar-brand">Recipe Book</a>
-          </div>
-          <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
+        </div>
+        <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
             <ul class="nav navbar-nav">
-                <li   routerLinkActive="active"><a  [routerLink]="['/recipies']"  >Recipes</a></li>
-                <li   routerLinkActive="active"><a  [routerLink]="['/shopinglist']">ShopingList</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/recipies']">Recipes</a></li>
+                <li routerLinkActive="active"><a [routerLink]="['/shopinglist']">ShopingList</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" appDropdown>
-                    <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span class="caret"></span></a>
+                    <a style="cursor: pointer;" class="dropdown-toggle" role="button">Manage <span
+                            class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a style="cursor: pointer;" (click)="onSaveData()">Save Data</a></li>
-                        <li><a style="cursor: pointer;" (click)="onFetcData()">Fetch Data</a></li>
+                        <li><a style="cursor: pointer;" (click)="onSaveRecipesData()">Save Data</a></li>
+                        <li><a style="cursor: pointer;" (click)="onFetchRecipesData()">Fetch Data</a></li>
                     </ul>
                 </li>
+                <h3 *ngIf="isSaving">saving...</h3>
+                <h3 *ngIf="isFetching">fetching...</h3>
+                <h3 *ngIf="errorOccurred">some error occurred...</h3>
             </ul>
         </div>
     </div>
